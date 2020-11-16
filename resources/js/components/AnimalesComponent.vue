@@ -353,7 +353,8 @@ export default {
 
    async insertar() {
         const animalInsertado=this.animal;
-        this.animal={n_identificacion: "", especie_id: 0, zoologico_id: 0, sexo: "", anio_nacimiento: 0,
+     
+        this.animal={num_identificacion: "", especie_id: 0, zoologico_id: 0, sexo: "", anio_nacimiento: 0,
         pais_origen: "",continente: "",}, 
         axios.post('/animales', animalInsertado)
             .then((res) =>{
@@ -398,7 +399,6 @@ export default {
     async modificar(animal){
         const params = {num_identificacion: animal.num_identificacion, sexo: animal.sexo, anio_nacimiento:animal.anio_nacimiento,
                         pais_origen:animal.pais_origen, continente:animal.continente};
-        console.log(params);
         axios.put(`/animales/${this.animal.num_identificacion}`, params).then((res) => {
             alert('Actualización exitosa');   
         });
@@ -413,13 +413,10 @@ export default {
       this.habilitarEdicion = true;
       this.animal=item;
       this.$refs['modal-animal'].show();
-      console.log('lola');
-      console.log(this.habilitar);
-      console.log(this.habilitarEdicion);
     },
     cancelarEdicion(){
       this.habilitarEdicion = false;
-       this.animal={n_identificacion: "", especie_id: 0, zoologico_id: 0, sexo: "", anio_nacimiento: 0,
+       this.animal={num_identificacion: "", especie_id: 0, zoologico_id: 0, sexo: "", anio_nacimiento: 0,
                      pais_origen: "",continente: "",}; 
     },
     limpiarInfoModal() {
